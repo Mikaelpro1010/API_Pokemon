@@ -2,7 +2,7 @@
 FROM node:latest
 
 # Define o diretório de trabalho dentro do contêiner
-WORKDIR /usr/app
+WORKDIR /usr/app/consumo_api_backend
 
 # Copia os arquivos de dependências (package.json e package-lock.json, se existirem) para o diretório de trabalho
 COPY package*.json ./

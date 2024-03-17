@@ -2,7 +2,7 @@
 FROM node:latest as build-stage
 
 # Define o diretório de trabalho dentro do contêiner
-WORKDIR /usr/app
+WORKDIR /usr/app/consumo_api_frontend
 
 # Copia os arquivos de dependências (package.json e yarn.lock, se existirem) para o diretório de trabalho
 COPY package*.json ./
@@ -16,5 +16,5 @@ COPY . .
 # Expõe a porta em que o servidor Node.js estará em execução
 EXPOSE 5173
 
-# Compila o código do frontend
-CMD ["npm","run","dev"]
+# Adiciona o parâmetro --host 0.0.0.0 para permitir o acesso externo ao servidor Vite
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
