@@ -1,0 +1,40 @@
+version: '25.0.3'
+
+services:
+  database:
+    build: ./consumo_api_backend
+    image: postgres
+    container_name: database_api_pokemons
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=api_pokemons
+    volumes:
+      - pgdata:/data/postgres
+
+  app_backend:
+    build: ./consumo_api_backend
+    container_name: api_pokemons_backend
+    ports:
+      - 5000:5000
+    volumes:
+      - ./consumo_api_backend:/usr/app_backend
+    links:
+      - database
+    depends_on:
+      - database
+
+  app_frontend:
+    build: ./consumo_api_frontend
+    container_name: api_pokemons_frontend
+    ports:
+      - 5173:5173
+    volumes:
+      - ./consumo_api_frontend:/usr/app_frontend
+
+volumes:
+  pgdata:
+    driver: local
