@@ -2,7 +2,7 @@
 FROM node:latest as build-stage
 
 # Define o diretório de trabalho dentro do contêiner
-WORKDIR /usr/app/consumo_api_frontend
+WORKDIR /usr/app
 
 # Copia os arquivos de dependências (package.json e yarn.lock, se existirem) para o diretório de trabalho
 COPY package*.json ./

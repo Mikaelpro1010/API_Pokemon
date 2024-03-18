@@ -2,7 +2,7 @@ version: '2.24.6'
 
 services:
   database:
-    build: ./consumo_api_backend
+    build: .
     image: postgres
     container_name: database_api_pokemons
     restart: always
@@ -15,25 +15,17 @@ services:
     volumes:
       - pgdata:/data/postgres
 
-  app_backend:
-    build: ./consumo_api_backend
-    container_name: api_pokemons_backend
+  app_consumo_api:
+    build: .
+    container_name: consumo_api_pokemons
     ports:
-      - 5000:5000
+      - 5173:5173
     volumes:
-      - ./consumo_api_backend:/usr/app_backend
+      - .:/usr/app_consumo_api
     links:
       - database
     depends_on:
       - database
-
-  app_frontend:
-    build: ./consumo_api_frontend
-    container_name: api_pokemons_frontend
-    ports:
-      - 5173:5173
-    volumes:
-      - ./consumo_api_frontend:/usr/app_frontend
 
 volumes:
   pgdata:
