@@ -1,37 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from 'react';
+import Card from './Components/Card';
+import Navbar from './Components/Navbar';
+import './styles/index.css';
 
 function App() {
- 
+  const [pokemons, setPokemons] = useState<any[]>([]);
 
-  const [count, setCount] = useState(0)
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetchedPokemons: any[] = [];
+
+      for (let i = 1; i <= 151; i++) {
+        try {
+          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
+          const pokemon = await response.json();
+          const pokemonType = pokemon.types.map((poke: any) => poke.type.name).join(', ');
+
+          const transformedPokemon = {
+            id: pokemon.id,
+            name: pokemon.name,
+            image: pokemon.sprites.front_default,
+            type: pokemonType,
+          };
+
+          fetchedPokemons.push(transformedPokemon);
+        } catch (error) {
+          console.error(`Failed to fetch Pokémon with ID ${i}:`, error);
+        }
+      }
+
+      setPokemons(fetchedPokemons);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite é top</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Navbar />
+      <main>
+        <h1>Typed Pokedex</h1>
+        <div id="app" className="container grid grid-cols-3 gap-4 p-3">
+          {pokemons.map((pokemon) => (
+            <Card key={pokemon.id} pokemon={pokemon} />
+          ))}
+        </div>
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
