@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import Card from './Components/Card';
-import Navbar from './Components/Navbar';
-import './styles/index.css';
+import Card from '../Components/Card';
+import Navbar from '../Components/Navbar';
+import '../styles/index.css';
 
-function App() {
+function Pokedex() {
   const [pokemons, setPokemons] = useState<any[]>([]);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function App() {
       <Navbar />
       <main>
         <h1>Typed Pokedex</h1>
-        <div id="app" className="container grid grid-cols-3 gap-4 p-3">
+        <div id="app" className="container grid grid-cols-3 gap-4 p-4">
           {pokemons.map((pokemon) => (
             <Card key={pokemon.id} pokemon={pokemon} />
           ))}
@@ -50,4 +50,4 @@ function App() {
   );
 }
 
-export default App;
+export default Pokedex;
