@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate} from 'react-router-dom';
 import { supabase } from '../client';
+import FormLogin from '../Components/FormLogin';
 
 const Login = ({setToken}) => {
   let navigate = useNavigate()
@@ -50,28 +51,12 @@ const Login = ({setToken}) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        
-
-        <input 
-          placeholder='Email'
-          name='email'
-          onChange={handleChange}
-        />
-
-        <input 
-          placeholder='Password'
-          name='password'
-          type="password"
-          onChange={handleChange}
-        />
-
-        <button type='submit'>
-          Submit
-        </button>
-
-
-      </form>
+      <h1>Login</h1>
+      <FormLogin
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
   )
 }
