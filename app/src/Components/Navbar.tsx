@@ -14,7 +14,7 @@ const navigation = [
   { name: 'Team', href: '#', current: false },
 ]
 
-const Navbar = () => {
+const Navbar = ({ onLogout }) => {
   return (
       <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -96,12 +96,7 @@ const Navbar = () => {
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Sign out
-                          </a>
+                          <button  className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')} onClick={onLogout}>Sign out</button>
                         )}
                       </Menu.Item>
                     </Menu.Items>
