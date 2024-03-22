@@ -2,8 +2,17 @@ import React, { useEffect, useState } from 'react';
 import Card from '../Components/Card';
 import Navbar from '../Components/Navbar';
 import '../styles/index.css';
+import { useNavigate} from 'react-router-dom';
 
-function Pokedex() {
+const Pokedex = ({token}) => {
+
+  let navigate = useNavigate()
+
+  function handleLogout(){
+    sessionStorage.removeItem('token')
+    navigate('/login')
+  }
+
   const [pokemons, setPokemons] = useState<any[]>([]);
 
   useEffect(() => {
@@ -37,7 +46,7 @@ function Pokedex() {
 
   return (
     <>
-      <Navbar />
+      <Navbar onLogout={handleLogout} />
       <main>
         <h1>Typed Pokedex</h1>
         <div id="app" className="container grid grid-cols-3 gap-4 p-4">
