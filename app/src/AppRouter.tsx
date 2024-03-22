@@ -1,0 +1,33 @@
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Importe Routes também
+
+import Pokedex from './pages/Pokedex';
+import Register from './pages/Register';
+import Login from './pages/Login';
+
+function AppRouter() {
+  const [token, setToken] = useState(false)
+
+  if(token){
+    sessionStorage.setItem('token',JSON.stringify(token))
+  }
+
+  useEffect(() => {
+    if(sessionStorage.getItem('token')){
+      let data = JSON.parse(sessionStorage.getItem('token'))
+      setToken(data)
+    }
+    
+  }, [])
+  return (
+    <Router>
+      <Routes> {/* Use o componente Routes em vez de Route diretamente */}
+        <Route path="/register" element={<Register />} /> {/* Use o atributo 'element' */}
+        <Route path={'/login'} element={ <Login setToken={setToken}/>} />
+        {token?<Route path={'/pokedex'} element={ <Pokedex token={token} />} />:""}
+      </Routes>
+    </Router>
+  );
+}
+
+export default AppRouter;

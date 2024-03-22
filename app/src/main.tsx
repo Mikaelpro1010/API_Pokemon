@@ -1,9 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import Pokedex from './pages/Pokedex.tsx'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import AppRouter from './AppRouter';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Pokedex />
+    <AppRouter />
   </React.StrictMode>,
-)
+);
