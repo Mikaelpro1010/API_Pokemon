@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Importe Routes também
 
 import Pokedex from './pages/Pokedex';
-import Register from './pages/Register';
+import SignUp from './pages/SignUp';
 import Login from './pages/Login';
 
 function AppRouter() {
@@ -22,7 +22,7 @@ function AppRouter() {
   return (
     <Router>
       <Routes> {/* Use o componente Routes em vez de Route diretamente */}
-        <Route path="/register" element={<Register />} /> {/* Use o atributo 'element' */}
+        <Route path="/signUp" element={<SignUp />} /> {/* Use o atributo 'element' */}
         <Route path={'/login'} element={ <Login setToken={setToken}/>} />
         {token?<Route path={'/pokedex'} element={ <Pokedex token={token} />} />:""}
       </Routes>
