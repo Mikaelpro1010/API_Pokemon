@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { supabase } from '../client';
+import FormSignUp from '../Components/FormSignUp';
 
-function Register() {
+function SignUp() {
   
   const [formData,setFormData] = useState({
     userName:'',email:'',password:''
@@ -46,36 +47,15 @@ function Register() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input 
-          placeholder='Nome de usuário'
-          name='userName'
-          onChange={handleChange}
-        />
-
-        <input 
-          placeholder='Email'
-          name='email'
-          onChange={handleChange}
-        />
-
-        <input 
-          placeholder='Password'
-          name='password'
-          type="password"
-          onChange={handleChange}
-        />
-
-        <button type='submit'>
-          Submit
-        </button>
-
-
-      </form>
-      
-    </div>
+    <h1>Sign Up</h1>
+    <FormSignUp
+      formData={formData}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+    />
+  </div>
   )
 }
 
-export default Register;
+export default SignUp;
 
