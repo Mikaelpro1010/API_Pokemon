@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate} from 'react-router-dom';
 import { supabase } from '../client';
 import FormLogin from '../Components/FormLogin';
+import '../styles/index.css';
 
 const Login = ({setToken}) => {
   let navigate = useNavigate()
@@ -50,8 +51,7 @@ const Login = ({setToken}) => {
 
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className='text-white h-[100vh] flex justify-center items-center bg-cover' style={{background: "url('./src/assets/pokemonWalpaper.jpg')", backgroundSize: 'cover'}}>
       <FormLogin
         formData={formData}
         handleChange={handleChange}
