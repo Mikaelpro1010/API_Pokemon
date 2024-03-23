@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../Components/Card';
 import Navbar from '../Components/Navbar';
+import Filter from '../Components/Filter';
 import '../styles/index.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -56,20 +57,12 @@ const Pokedex = ({ token }) => {
       <Navbar onLogout={handleLogout} />
       <main>
         <h1>Typed Pokedex</h1>
-        <div>
-          <input
-            type="text"
-            placeholder="Nome"
-            value={searchName}
-            onChange={(e) => setSearchName(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Tipo"
-            value={searchType}
-            onChange={(e) => setSearchType(e.target.value)}
-          />
-        </div>
+        <Filter 
+          searchName={searchName}
+          setSearchName={setSearchName}
+          searchType={searchType}
+          setSearchType={setSearchType}
+        />
         <div id="app" className="container grid grid-cols-3 gap-4 p-4">
           {filteredPokemons.length > 0 ? (
             filteredPokemons.map((pokemon) => <Card key={pokemon.id} pokemon={pokemon} />)
