@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { supabase } from '../client';
 import FormSignUp from '../Components/FormSignUp';
+import '../styles/index.css';
 
 function SignUp() {
   
@@ -46,14 +47,13 @@ function SignUp() {
   }
 
   return (
-    <div>
-    <h1>Sign Up</h1>
-    <FormSignUp
-      formData={formData}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-    />
-  </div>
+    <div className='text-white h-[100vh] flex justify-center items-center bg-cover' style={{background: "url('./src/assets/pokemonWalpaper.jpg')", backgroundSize: 'cover'}}>
+      <FormSignUp
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
+    </div>
   )
 }
 
