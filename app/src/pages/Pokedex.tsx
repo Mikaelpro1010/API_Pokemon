@@ -69,13 +69,12 @@ const Pokedex = ({ token }) => {
             value={searchType}
             onChange={(e) => setSearchType(e.target.value)}
           />
-          <button>Pesquisar</button>
         </div>
         <div id="app" className="container grid grid-cols-3 gap-4 p-4">
           {filteredPokemons.length > 0 ? (
             filteredPokemons.map((pokemon) => <Card key={pokemon.id} pokemon={pokemon} />)
           ) : (
-            <p>No Pokémon found.</p>
+            <p>O pokémon procurado não existe nesta pokedéx.</p>
           )}
         </div>
       </main>
