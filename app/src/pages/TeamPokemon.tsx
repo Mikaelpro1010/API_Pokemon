@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Navbar from '../Components/Navbar';
+import Card from '../Components/Card';
 import { useNavigate } from 'react-router-dom';
 
 const TeamPokemon: React.FC = () => {
@@ -62,11 +63,11 @@ const TeamPokemon: React.FC = () => {
         <input type="text" value={pokemonName} onChange={(e) => setPokemonName(e.target.value)} placeholder="Enter Pokémon name" />
         <button type="submit">Add Pokémon</button>
       </form>
-      <ul>
+      <div id="app" className="container grid grid-cols-3 gap-4 p-4">
         {team.map((pokemon, index) => (
-          <li key={index}>{pokemon.name}</li>
+          <Card key={pokemon.id} pokemon={pokemon} />
         ))}
-      </ul>
+      </div>
       {teamLimitReached && <p>Failed to add Pokémon. Team limit reached or Pokémon not found.</p>}
     </div>
   );

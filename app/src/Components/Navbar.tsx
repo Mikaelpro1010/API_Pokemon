@@ -10,8 +10,8 @@ function classNames(...classes: string[]) {
     return classes.filter(Boolean).join(' ');
 }
 const navigation = [
-  { name: 'Pokédex', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
+  { name: 'Pokédex', href: '/pokedex', current: true },
+  { name: 'Team Pokémon', href: '/team-pokemon', current: false },
 ]
 
 const Navbar = ({ onLogout }) => {
