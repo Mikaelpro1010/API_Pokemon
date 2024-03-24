@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Card: React.FC<{ pokemon: any }> = ({ pokemon }) => {
+const Card: React.FC<{ pokemon: any; onClick: () => void }> = ({ pokemon, onClick }) => {
   const { id, name, image, type } = pokemon;
 
   return (
-    <div className="card bg-gray rounded-lg shadow-md p-6">
+    <div className="card bg-gray rounded-lg shadow-md p-6" onClick={onClick}>
       <span className="card--id text-lg font-bold">#{id}</span>
       <div className="mt-4 flex justify-center">
         <img className="card--image mt-4" src={image} alt={name} />
