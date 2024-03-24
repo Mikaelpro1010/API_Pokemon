@@ -13,7 +13,7 @@ const Pokedex = ({ token }) => {
     navigate('/login');
   }
 
-  const [loading, setLoading] = useState(true); // Estado para controlar o carregamento
+  const [loading, setLoading] = useState(true);
   const [pokemons, setPokemons] = useState([]);
   const [searchName, setSearchName] = useState('');
   const [searchType, setSearchType] = useState('');
@@ -42,7 +42,7 @@ const Pokedex = ({ token }) => {
       }
 
       setPokemons(fetchedPokemons);
-      setLoading(false); // Quando o carregamento estiver concluído, definimos loading como false
+      setLoading(false);
     };
 
     fetchData();
@@ -57,7 +57,7 @@ const Pokedex = ({ token }) => {
   return (
     <>
       <Navbar onLogout={handleLogout} />
-      <main>
+      <main className="container mx-auto px-4">
         <Filter 
           searchName={searchName}
           setSearchName={setSearchName}
@@ -65,11 +65,11 @@ const Pokedex = ({ token }) => {
           setSearchType={setSearchType}
         />
         {loading ? (
-        <div className="flex justify-center items-center h-screen">
-          <div className="w-16 h-16 border-8 border-gray-100 border-t-8 border-b-red-600 rounded-full animate-spin"></div>
-        </div>
+          <div className="flex justify-center items-center h-screen">
+            <div className="w-16 h-16 border-8 border-gray-100 border-t-8 border-b-red-600 rounded-full animate-spin"></div>
+          </div>
         ) : (
-          <div className="grid grid-cols-3 gap-4 p-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4">
             {filteredPokemons.length > 0 ? (
               filteredPokemons.map((pokemon) => <Card key={pokemon.id} pokemon={pokemon} />)
             ) : (
@@ -83,6 +83,3 @@ const Pokedex = ({ token }) => {
 };
 
 export default Pokedex;
-
-
-
