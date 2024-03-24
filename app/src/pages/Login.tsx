@@ -38,17 +38,10 @@ const Login = ({setToken}) => {
       setToken(data)
       navigate('/pokedex')
 
-
-    //   alert('Check your email for verification link')
-
-      
     } catch (error) {
       alert(error)
     }
   }
-
-
-
 
   return (
     <div className='text-white h-[100vh] flex justify-center items-center bg-cover' style={{background: "url('./src/assets/pokemonWalpaper.jpg')", backgroundSize: 'cover'}}>

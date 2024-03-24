@@ -3,7 +3,6 @@ import Navbar from '../Components/Navbar';
 import Card from '../Components/Card';
 import { useNavigate } from 'react-router-dom';
 import FormTeamPokemon from '../Components/FormTeamPokemon';
-import { supabase } from '../client';
 
 const TeamPokemon: React.FC = ({ token }) => {
   let navigate = useNavigate();
