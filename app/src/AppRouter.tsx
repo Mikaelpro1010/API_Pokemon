@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Im
 import Pokedex from './pages/Pokedex';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
+import TeamPokemon from './pages/TeamPokemon';
 
 function AppRouter() {
   const [token, setToken] = useState(false)
@@ -25,6 +26,7 @@ function AppRouter() {
         <Route path="/signUp" element={<SignUp />} /> {/* Use o atributo 'element' */}
         <Route path={'/login'} element={ <Login setToken={setToken}/>} />
         {token?<Route path={'/pokedex'} element={ <Pokedex token={token} />} />:""}
+        <Route path="/team-pokemon" element={<TeamPokemon />} />
       </Routes>
     </Router>
   );
