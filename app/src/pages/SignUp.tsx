@@ -38,7 +38,7 @@ function SignUp() {
         }
       )
       if (error) throw error
-      alert('Check your email for verification link')
+      alert('Verifique seu e-mail para obter o link de verificação!')
 
       
     } catch (error) {
