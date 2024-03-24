@@ -13,6 +13,7 @@ const Pokedex = ({ token }) => {
     navigate('/login');
   }
 
+  const [loading, setLoading] = useState(true); // Estado para controlar o carregamento
   const [pokemons, setPokemons] = useState([]);
   const [searchName, setSearchName] = useState('');
   const [searchType, setSearchType] = useState('');
@@ -36,11 +37,12 @@ const Pokedex = ({ token }) => {
 
           fetchedPokemons.push(transformedPokemon);
         } catch (error) {
-          console.error(`Failed to fetch Pokémon with ID ${i}:`, error);
+          console.error(`Falha ao buscar Pokémon com ID ${i}:`, error);
         }
       }
 
       setPokemons(fetchedPokemons);
+      setLoading(false); // Quando o carregamento estiver concluído, definimos loading como false
     };
 
     fetchData();
@@ -56,24 +58,31 @@ const Pokedex = ({ token }) => {
     <>
       <Navbar onLogout={handleLogout} />
       <main>
-        <h1>Typed Pokedex</h1>
         <Filter 
           searchName={searchName}
           setSearchName={setSearchName}
           searchType={searchType}
           setSearchType={setSearchType}
         />
-        <div id="app" className="container grid grid-cols-3 gap-4 p-4">
-          {filteredPokemons.length > 0 ? (
-            filteredPokemons.map((pokemon) => <Card key={pokemon.id} pokemon={pokemon} />)
-          ) : (
-            <p>O pokémon procurado não existe nesta pokedéx.</p>
-          )}
+        {loading ? (
+        <div className="flex justify-center items-center h-screen">
+          <div className="w-16 h-16 border-8 border-gray-100 border-t-8 border-b-red-600 rounded-full animate-spin"></div>
         </div>
+        ) : (
+          <div className="grid grid-cols-3 gap-4 p-4">
+            {filteredPokemons.length > 0 ? (
+              filteredPokemons.map((pokemon) => <Card key={pokemon.id} pokemon={pokemon} />)
+            ) : (
+              <p className="bg-red-500 text-white p-3 rounded-md mt-4">O pokémon procurado não existe nesta pokedéx.</p>
+            )}
+          </div>
+        )}
       </main>
     </>
   );
 };
 
 export default Pokedex;
+
+
 

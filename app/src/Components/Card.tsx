@@ -5,7 +5,7 @@ const Card: React.FC<{ pokemon: any }> = ({ pokemon }) => {
 
   return (
     <div className="card bg-gray rounded-lg shadow-md p-6">
-      <span className="card--id text-gray-600">#{id}</span>
+      <span className="card--id text-lg font-bold">#{id}</span>
       <div className="mt-4 flex justify-center">
         <img className="card--image mt-4" src={image} alt={name} />
       </div>
