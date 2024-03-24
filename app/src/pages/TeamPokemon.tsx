@@ -32,12 +32,12 @@ const TeamPokemon: React.FC = () => {
 
     try {
       if (team.length >= 5) {
-        throw new Error('Team limit reached.');
+        throw new Error('Limite da equipe atingido.');
       }
 
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName.toLowerCase()}`);
       if (!response.ok) {
-        throw new Error('Pokemon not found.');
+        throw new Error('Pokémon não encontrado.');
       }
       const pokemon = await response.json();
       addPokemonToTeam({
@@ -48,7 +48,7 @@ const TeamPokemon: React.FC = () => {
       });
       setPokemonName('');
     } catch (error) {
-      console.error('Error adding Pokemon to team:', error);
+      console.error('Erro ao adicionar Pokémon à equipe:', error);
       setTeamLimitReached(true);
       setTimeout(() => {
         setTeamLimitReached(false);
@@ -69,7 +69,7 @@ const TeamPokemon: React.FC = () => {
           <Card key={pokemon.id} pokemon={pokemon} />
         ))}
       </div>
-      {teamLimitReached && <p>Failed to add Pokémon. Team limit reached or Pokémon not found.</p>}
+      {teamLimitReached && <p className="bg-red-500 text-white p-4 rounded-md mt-4">Falha ao adicionar Pokémon. Limite de equipe atingido ou Pokémon não encontrado.</p>}
     </div>
   );
 };
