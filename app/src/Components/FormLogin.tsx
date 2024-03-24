@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Importando o componente Link
+import { BiUser } from 'react-icons/bi'
+import { AiOutlineUnlock } from 'react-icons/ai'
 
 const FormLogin = ({ formData, handleChange, handleSubmit }) => {
     return(
@@ -18,6 +20,7 @@ const FormLogin = ({ formData, handleChange, handleSubmit }) => {
                         <label htmlFor="" className="absolute text-sm text-white duration-300 transform -translate-y-6 scale-75 top-0 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                             Seu Email
                         </label>
+                        <BiUser className="absolute top-0 right-4" />
                     </div>
 
                     <div className="relative my-4">
@@ -31,6 +34,7 @@ const FormLogin = ({ formData, handleChange, handleSubmit }) => {
                         <label htmlFor="" className="absolute text-sm text-white duration-300 transform -translate-y-6 scale-75 top-0 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                             Sua Senha
                         </label>
+                        <AiOutlineUnlock className="absolute top-0 right-4" />
                     </div>
 
                     <button className="w-full mb-4 text-[18px] mt-6 rounded-full bg-white text-emerald-800 hover:bg-emerald-600 hover:text-white py-2 transition-colors duration-300" type="submit">
