@@ -94,7 +94,7 @@ const Navbar = ({ onLogout }) => {
                           onClick={onLogout}
                         >
                           <div className="flex items-center">
-                            <span>Sign out</span>
+                            <span>Sair</span>
                           </div>
                           {/* Adicione qualquer outro elemento que você queira no lado direito */}
                         </button>
