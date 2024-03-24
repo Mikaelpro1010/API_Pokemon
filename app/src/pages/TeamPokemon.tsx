@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../Components/Navbar';
 import Card from '../Components/Card';
 import { useNavigate } from 'react-router-dom';
+import FormTeamPokemon from '../Components/FormTeamPokemon';
 
 const TeamPokemon: React.FC = () => {
   let navigate = useNavigate();
@@ -58,13 +59,13 @@ const TeamPokemon: React.FC = () => {
   return (
     <div>
       <Navbar onLogout={handleLogout} />
-      <h1>Team Pokémon</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={pokemonName} onChange={(e) => setPokemonName(e.target.value)} placeholder="Enter Pokémon name" />
-        <button type="submit">Add Pokémon</button>
-      </form>
+      <FormTeamPokemon  
+        setPokemonName={setPokemonName}
+        pokemonName={pokemonName}
+        handleSubmit={handleSubmit}
+      />
       <div id="app" className="container grid grid-cols-3 gap-4 p-4">
-        {team.map((pokemon, index) => (
+        {team.map((pokemon) => (
           <Card key={pokemon.id} pokemon={pokemon} />
         ))}
       </div>
@@ -74,5 +75,6 @@ const TeamPokemon: React.FC = () => {
 };
 
 export default TeamPokemon;
+
 
 
