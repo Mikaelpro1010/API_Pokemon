@@ -3,13 +3,14 @@ import Navbar from '../Components/Navbar';
 import Card from '../Components/Card';
 import { useNavigate } from 'react-router-dom';
 import FormTeamPokemon from '../Components/FormTeamPokemon';
+import { supabase } from '../client';
 
-const TeamPokemon: React.FC = () => {
+const TeamPokemon: React.FC = ({ token }) => {
   let navigate = useNavigate();
 
   function handleLogout() {
     sessionStorage.removeItem('token');
-    navigate('/login');
+    navigate('/');
   }
 
   const [pokemonName, setPokemonName] = useState<string>('');
@@ -64,7 +65,7 @@ const TeamPokemon: React.FC = () => {
         pokemonName={pokemonName}
         handleSubmit={handleSubmit}
       />
-      <div id="app" className="container grid grid-cols-3 gap-4 p-4">
+      <div id="app" className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4">
         {team.map((pokemon) => (
           <Card key={pokemon.id} pokemon={pokemon} />
         ))}
@@ -75,6 +76,3 @@ const TeamPokemon: React.FC = () => {
 };
 
 export default TeamPokemon;
-
-
-

@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import Card from '../Components/Card';
 import Navbar from '../Components/Navbar';
 import Filter from '../Components/Filter';
-import '../styles/index.css';
 import { useNavigate } from 'react-router-dom';
+import '../styles/index.css';
 
 const Pokedex = ({ token }) => {
   let navigate = useNavigate();
 
   function handleLogout() {
     sessionStorage.removeItem('token');
-    navigate('/login');
+    navigate('/');
   }
 
   const [loading, setLoading] = useState(true);
@@ -83,3 +83,4 @@ const Pokedex = ({ token }) => {
 };
 
 export default Pokedex;
+

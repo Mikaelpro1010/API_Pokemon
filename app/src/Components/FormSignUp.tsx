@@ -48,7 +48,7 @@ const FormSignUp = ({ formData, handleChange, handleSubmit }) => {
                         Cadastrar
                     </button>
                     <div>
-                        <span className="m-6">Já possui uma conta? <Link to='/login' className="text-blue-500">Login</Link></span>
+                        <span className="m-6">Já possui uma conta? <Link to='/' className="text-blue-500">Login</Link></span>
                     </div>
 
                 </form>
