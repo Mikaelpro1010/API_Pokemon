@@ -3,8 +3,8 @@ import React from 'react';
 
 const Filter = ({ searchName, setSearchName, searchType, setSearchType }) => {
     return(
-        <div className="flex justify-end p-4 items-end">
-            <div className="space-y-3">
+        <div className="flex justify-end items-end p-4">
+            <div className="card bg-gray rounded-lg shadow-md p-3 space-y-3">
                 <div className="block mx-4">
                     <h2 className="text-lg font-bold mr-4">Filtrar Pokémons:</h2>
                 </div>
