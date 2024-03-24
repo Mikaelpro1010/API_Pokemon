@@ -47,7 +47,7 @@ function SignUp() {
   }
 
   return (
-    <div className='text-white h-[100vh] flex justify-center items-center bg-cover' style={{background: "url('./src/assets/pokemonWalpaper.jpg')", backgroundSize: 'cover'}}>
+    <div className='text-white h-[100vh] flex justify-center items-center bg-cover' style={{background: "url('./src/assets/legendaryPokemon.jpg')", backgroundSize: 'cover'}}>
       <FormSignUp
         formData={formData}
         handleChange={handleChange}
