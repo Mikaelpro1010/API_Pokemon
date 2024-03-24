@@ -1,20 +1,6 @@
 version: '2.24.6'
 
 services:
-  database:
-    build: .
-    image: postgres
-    container_name: database_api_pokemons
-    restart: always
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=123
-      - POSTGRES_DB=api_pokemons
-    volumes:
-      - pgdata:/data/postgres
-
   app_consumo_api:
     build: .
     container_name: consumo_api_pokemons
@@ -22,10 +8,6 @@ services:
       - 5173:5173
     volumes:
       - .:/usr/app_consumo_api
-    links:
-      - database
-    depends_on:
-      - database
 
 volumes:
   pgdata:
